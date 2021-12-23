@@ -1,0 +1,320 @@
+:root {
+    --default-white:#FFFFFF;
+    --default-black:#000000;
+
+    --default-grey:#808080;
+    --default-dark-grey:#737373;
+    --default-light-grey:#8c8c8c;
+
+    --default-red:#FF0000;
+    --default-dark-red:#e50000;
+    --default-light-red:#ff1919;
+
+    --default-orange:#FFA500;
+    --default-dark-orange:#e59400;
+    --default-light-orange:#ffae19;
+
+    --default-yellow:#FFFF00;
+    --default-dark-yellow:#e5e500;
+    --default-light-yellow:#ffff19;
+
+    --default-green:#008000;
+    --default-dark-green:#007300;
+    --default-light-green:#198c19;
+
+    --default-blue:#0000FF;
+    --default-dark-blue:#0000cc;
+    --default-light-blue:#3232ff;
+
+    --default-purple:#800080;
+    --default-dark-purple:#730073;
+    --default-light-purple:#8c198c;
+
+    --default-pink:#FFC0CB;
+    --default-dark-pink:#e5acb6;
+    --default-light-pink:#ffd2da;
+
+/* Ubuntu colors */
+    --ubuntu-white:#FFFFFF;
+    --ubuntu-black:#000000;
+
+    --ubuntu-grey:#333333;
+    --ubuntu-dark-grey:#111111;
+    --ubuntu-light-grey:#AEA79F;
+
+/*     --ubuntu-red: var(--default-red);
+    --ubuntu-dark-red: var(--default-dark-red);
+    --ubuntu-light-red: var(--default-light-red); */
+
+    --ubuntu-orange:#E95420;
+/*     --ubuntu-dark-orange: var(--default-dark-orange);
+    --ubuntu-light-orange: var(--default-light-orange); */
+
+/*     --ubuntu-yellow: var(--default-yellow);
+    --ubuntu-dark-yellow: var(--default-dark-yellow);
+    --ubuntu-light-yellow: var(--default-light-yellow); */
+
+/*     --ubuntu-green: var(--default-green);
+    --ubuntu-dark-green: var(--default-dark-green);
+    --ubuntu-light-green: var(--default-light-green); */
+
+/*     --ubuntu-blue: var(--default-blue);
+    --ubuntu-dark-blue: var(--default-dark-blue);
+    --ubuntu-light-blue: var(--default-light-blue); */
+
+    --ubuntu-purple:#5E2750;
+    --ubuntu-dark-purple: #2C001E;
+    --ubuntu-light-purple: #77216F;
+
+/*     --ubuntu-pink: var(--default-pink);
+    --ubuntu-dark-pink: var(--default-dark-pink);
+    --ubuntu-light-pink: var(-default-light-pink); */
+
+/* Fedora colors */
+/*     --fedora-white: var(--default-white);
+    --fedora-black: var(--default-black); */
+
+    --fedora-grey: #8c8c8c;
+    --fedora-dark-grey: #4c4c4c;
+    --fedora-light-grey: #dedede;
+
+/*     --fedora-red: var(--default-red);
+    --fedora-dark-red: var(--default-dark-red);
+    --fedora-light-red: var(--default-light-red); */
+
+    --fedora-orange: #e59728;
+/*     --fedora-dark-orange: var(--default-dark-orange);
+    --fedora-light-orange: var(--default-light-orange); */
+
+/*     --fedora-yellow: var(--default-yellow);
+    --fedora-dark-yellow: var(--default-dark-yellow);
+    --fedora-light-yellow: var(--default-light-yellow); */
+
+    --fedora-green: #79db32;
+/*     --fedora-dark-green: var(--default-dark-green);
+    --fedora-light-green: var(--default-light-green); */
+
+    --fedora-blue: #3c6eb4;
+    --fedora-dark-blue: #294172;
+    /* --fedora-light-blue: var(--default-light-blue); */
+
+    --fedora-purple: #a07cbc;
+/*     --fedora-dark-purple: var(--default-dark-purple);
+    --fedora-light-purple: var(--default-light-purple); */
+
+    --fedora-pink: #db3279;
+/*     --fedora-dark-pink: var(--default-dark-pink);
+    --fedora-light-pink: var(--default-light-pink); */
+
+/* Red Hat colors */
+/*     --redhat-white: var(--default-white);
+    --redhat-black: var(--default-black); */
+
+/*     --redhat-grey: var(--default-grey);
+    --redhat-dark-grey: var(--default-dark-grey);
+    --redhat-light-grey: var(--default-light-grey); */
+
+    --redhat-red: #EE0000;
+/*     --redhat-dark-red: var(--default-dark-red);
+    --redhat-light-red: var(--default-light-red); */
+
+    --redhat-orange: #F78340;
+    --redhat-light-orange: #FAAA54;
+    /* --redhat-dark-orange: var(--default-dark-orange); */
+
+    --redhat-yellow: #FEEA73;
+/*     --redhat-dark-yellow: var(--default-dark-yellow);
+    --redhat-light-yellow: var(--default-light-yellow); */
+
+    --redhat-green: #82C199;
+    --redhat-dark-green: #79C4C4;
+    --redhat-light-green: #C1D786;
+    
+    --redhat-blue: #316DBC;
+    --redhat-light-blue: #0499C1;
+    /* --redhat-dark-blue: var(--default-dark-blue); */
+
+    --redhat-purple: #5E40B7;
+/*     --redhat-dark-purple: var(--default-dark-purple);
+    --redhat-light-purple: var(--default-light-purple); */
+
+/*     --redhat-pink: var(--default-pink);
+    --redhat-dark-pink: var(--default-dark-pink);
+    --redhat-light-pink: var(--default-light-pink); */
+
+/* Dracula colors */
+    --dracula-white: #f8f8f2;
+    --dracula-black: #282a36;
+
+    --dracula-grey: #44475a;
+/*     --dracula-dark-grey: var(--default-dark-grey);
+    --dracula-light-grey: var(--default-light-grey); */
+
+    --dracula-red: #ff5555;
+/*     --dracula-dark-red: var(--default-dark-red);
+    --dracula-light-red: var(--default-light-red); */
+
+    --dracula-orange: #ffb86c;
+/*     --dracula-dark-orange: var(--default-dark-orange);
+    --dracula-light-orange: var(--default-light-orange); */
+
+    --dracula-yellow: #f1fa8c;
+/*     --dracula-dark-yellow: var(--default-dark-yellow);
+    --dracula-light-yellow: var(--default-light-yellow); */
+
+    --dracula-green: #50fa7b;
+/*     --dracula-dark-green: var(--default-dark-green);
+    --dracula-light-green: var(--default-light-green); */
+
+    --dracula-blue: #6272a4;
+    --dracula-light-blue: #8be9fd;
+    /* --dracula-dark-blue: var(--default-dark-blue); */
+
+    --dracula-purple: #bd93f9;
+/*     --dracula-dark-purple: var(--default-dark-purple);
+    --dracula-light-purple: var(--default-light-purple); */
+
+    --dracula-pink: #ff79c6;
+/*     --dracula-dark-pink: var(--default-dark-pink);
+    --dracula-light-pink: var(--default-light-pink); */
+}
+
+body {
+    background-color: #354A2F;
+}
+
+.default-color1 { color: var(--default-white); }
+.default-color2 { color: var(--default-black); }
+.default-color3 { color: var(--default-grey); }
+.default-color4 { color: var(--default-dark-grey); }
+.default-color5 { color: var(--default-light-grey); }
+.default-color6 { color: var(--default-red); }
+.default-color7 { color: var(--default-light-red); }
+.default-color8 { color: var(--default-dark-red); }
+.default-color9 { color: var(--default-orange); }
+.default-color10 { color: var(--default-light-orange); }
+.default-color11 { color: var(--default-dark-orange); }
+.default-color12 { color: var(--default-yellow); }
+.default-color13 { color: var(--default-light-yellow); }
+.default-color14 { color: var(--default-dark-yellow); }
+.default-color15 { color: var(--default-green); }
+.default-color16 { color: var(--default-light-green); }
+.default-color17 { color: var(--default-dark-green); }
+.default-color18 { color: var(--default-blue); }
+.default-color19 { color: var(--default-light-blue); }
+.default-color20 { color: var(--default-dark-blue); }
+.default-color21 { color: var(--default-purple); }
+.default-color22 { color: var(--default-light-purple); }
+.default-color23 { color: var(--default-dark-purple); }
+.default-color24 { color: var(--default-pink); }
+.default-color25 { color: var(--default-light-pink); }
+.default-color26 { color: var(--default-dark-pink); }
+
+.ubuntu-color1 { color: var(--ubuntu-white); }
+.ubuntu-color2 { color: var(--ubuntu-black); }
+.ubuntu-color3 { color: var(--ubuntu-grey); }
+.ubuntu-color4 { color: var(--ubuntu-dark-grey); }
+.ubuntu-color5 { color: var(--ubuntu-light-grey); }
+.ubuntu-color6 { color: var(--ubuntu-red); }
+.ubuntu-color7 { color: var(--ubuntu-light-red); }
+.ubuntu-color8 { color: var(--ubuntu-dark-red); }
+.ubuntu-color9 { color: var(--ubuntu-orange); }
+.ubuntu-color10 { color: var(--ubuntu-light-orange); }
+.ubuntu-color11 { color: var(--ubuntu-dark-orange); }
+.ubuntu-color12 { color: var(--ubuntu-yellow); }
+.ubuntu-color13 { color: var(--ubuntu-light-yellow); }
+.ubuntu-color14 { color: var(--ubuntu-dark-yellow); }
+/* .ubuntu-color15 { color: var(--ubuntu-green, var(--default-green)); } */
+.ubuntu-color15 { color: var(--ubuntu-green); }
+.ubuntu-color16 { color: var(--ubuntu-light-green); }
+.ubuntu-color17 { color: var(--ubuntu-dark-green); }
+.ubuntu-color18 { color: var(--ubuntu-blue); }
+.ubuntu-color19 { color: var(--ubuntu-light-blue); }
+.ubuntu-color20 { color: var(--ubuntu-dark-blue); }
+.ubuntu-color21 { color: var(--ubuntu-purple); }
+.ubuntu-color22 { color: var(--ubuntu-light-purple); }
+.ubuntu-color23 { color: var(--ubuntu-dark-purple); }
+.ubuntu-color24 { color: var(--ubuntu-pink); }
+.ubuntu-color25 { color: var(--ubuntu-light-pink); }
+.ubuntu-color26 { color: var(--ubuntu-dark-pink); }
+
+.fedora-color1 { color: var(--fedora-white); }
+.fedora-color2 { color: var(--fedora-black); }
+.fedora-color3 { color: var(--fedora-grey); }
+.fedora-color4 { color: var(--fedora-dark-grey); }
+.fedora-color5 { color: var(--fedora-light-grey); }
+.fedora-color6 { color: var(--fedora-red); }
+.fedora-color7 { color: var(--fedora-light-red); }
+.fedora-color8 { color: var(--fedora-dark-red); }
+.fedora-color9 { color: var(--fedora-orange); }
+.fedora-color10 { color: var(--fedora-light-orange); }
+.fedora-color11 { color: var(--fedora-dark-orange); }
+.fedora-color12 { color: var(--fedora-yellow); }
+.fedora-color13 { color: var(--fedora-light-yellow); }
+.fedora-color14 { color: var(--fedora-dark-yellow); }
+.fedora-color15 { color: var(--fedora-green); }
+.fedora-color16 { color: var(--fedora-light-green); }
+.fedora-color17 { color: var(--fedora-dark-green); }
+.fedora-color18 { color: var(--fedora-blue); }
+.fedora-color19 { color: var(--fedora-light-blue); }
+.fedora-color20 { color: var(--fedora-dark-blue); }
+.fedora-color21 { color: var(--fedora-purple); }
+.fedora-color22 { color: var(--fedora-light-purple); }
+.fedora-color23 { color: var(--fedora-dark-purple); }
+.fedora-color24 { color: var(--fedora-pink); }
+.fedora-color25 { color: var(--fedora-light-pink); }
+.fedora-color26 { color: var(--fedora-dark-pink); }
+
+.redhat-color1 { color: var(--redhat-white); }
+.redhat-color2 { color: var(--redhat-black); }
+.redhat-color3 { color: var(--redhat-grey); }
+.redhat-color4 { color: var(--redhat-dark-grey); }
+.redhat-color5 { color: var(--redhat-light-grey); }
+.redhat-color6 { color: var(--redhat-red); }
+.redhat-color7 { color: var(--redhat-light-red); }
+.redhat-color8 { color: var(--redhat-dark-red); }
+.redhat-color9 { color: var(--redhat-orange); }
+.redhat-color10 { color: var(--redhat-light-orange); }
+.redhat-color11 { color: var(--redhat-dark-orange); }
+.redhat-color12 { color: var(--redhat-yellow); }
+.redhat-color13 { color: var(--redhat-light-yellow); }
+.redhat-color14 { color: var(--redhat-dark-yellow); }
+.redhat-color15 { color: var(--redhat-green); }
+.redhat-color16 { color: var(--redhat-light-green); }
+.redhat-color17 { color: var(--redhat-dark-green); }
+.redhat-color18 { color: var(--redhat-blue); }
+.redhat-color19 { color: var(--redhat-light-blue); }
+.redhat-color20 { color: var(--redhat-dark-blue); }
+.redhat-color21 { color: var(--redhat-purple); }
+.redhat-color22 { color: var(--redhat-light-purple); }
+.redhat-color23 { color: var(--redhat-dark-purple); }
+.redhat-color24 { color: var(--redhat-pink); }
+.redhat-color25 { color: var(--redhat-light-pink); }
+.redhat-color26 { color: var(--redhat-dark-pink); }
+
+.dracula-color1 { color: var(--dracula-white); }
+.dracula-color2 { color: var(--dracula-black); }
+.dracula-color3 { color: var(--dracula-grey); }
+.dracula-color4 { color: var(--dracula-dark-grey); }
+.dracula-color5 { color: var(--dracula-light-grey); }
+.dracula-color6 { color: var(--dracula-red); }
+.dracula-color7 { color: var(--dracula-light-red); }
+.dracula-color8 { color: var(--dracula-dark-red); }
+.dracula-color9 { color: var(--dracula-orange); }
+.dracula-color10 { color: var(--dracula-light-orange); }
+.dracula-color11 { color: var(--dracula-dark-orange); }
+.dracula-color12 { color: var(--dracula-yellow); }
+.dracula-color13 { color: var(--dracula-light-yellow); }
+.dracula-color14 { color: var(--dracula-dark-yellow); }
+.dracula-color15 { color: var(--dracula-green); }
+.dracula-color16 { color: var(--dracula-light-green); }
+.dracula-color17 { color: var(--dracula-dark-green); }
+.dracula-color18 { color: var(--dracula-blue); }
+.dracula-color19 { color: var(--dracula-light-blue); }
+.dracula-color20 { color: var(--dracula-dark-blue); }
+.dracula-color21 { color: var(--dracula-purple); }
+.dracula-color22 { color: var(--dracula-light-purple); }
+.dracula-color23 { color: var(--dracula-dark-purple); }
+.dracula-color24 { color: var(--dracula-pink); }
+.dracula-color25 { color: var(--dracula-light-pink); }
+.dracula-color26 { color: var(--dracula-dark-pink); }
