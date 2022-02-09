@@ -25,7 +25,7 @@ function get_input_value (){
 
 {
   "name": "Cheatsheet do vini",
-  "template-color": "default",
+  "template_color": "default",
   "title": "RHCSA",
   "systemd": "Configuração e controle de sistemas Linux",
   "man systemd.unit": "Para mais informações",
