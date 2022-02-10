@@ -11,7 +11,7 @@ function get_input_value (){
     //console.log(Object.values(obj)[0]);
 
     console.log(obj.name);
-    console.log(obj.template_color);
+    console.log(obj.palette);
     console.log(obj.title);
     console.log(" ");
 
@@ -25,7 +25,7 @@ function get_input_value (){
 
 {
   "name": "Cheatsheet do vini",
-  "template_color": "default",
+  "palette": "default",
   "title": "RHCSA",
   "systemd": "Configuração e controle de sistemas Linux",
   "man systemd.unit": "Para mais informações",
