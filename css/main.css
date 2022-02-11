@@ -1,0 +1,23 @@
+body {
+    background-color: #19171a;
+}
+
+.titulo {
+    color: #238b76; 
+}
+
+.cheatsheet {
+    color: #cebd00;
+}
+
+.topic {
+    color: #c32047;
+}
+
+.card {
+    background-color: #b3cdca;
+}
+
+a {
+    color: #2f72a2;
+}

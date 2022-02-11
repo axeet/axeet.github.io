@@ -4,38 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/template.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <!-- <link rel="stylesheet" href="fedora.css"> -->
     <title>Cheatsheet template model</title>
 </head>
 <body>
     <header><a href="#" about="_blank">Link para este cheatsheet</a></header>
 
     <section>
-        <h1>Nome fictício do Cheatsheet</h1>
+        <h1 class="titulo">Nome fictício do Cheatsheet</h1>
 
-        <h2>Título fictício do Cheatsheet</h2>
+        <h2 class="cheatsheet">Título fictício do Cheatsheet</h2>
     </section>
     
-    <section>
-        <h4>Comando fictício 1</h4>
-        <article>
-            <pre>
-                <code>
-                    <span>Texto fictício 1</span>
-                </code>
-            </pre>
-        </article> 
-    </section>
+    <section class="cheat">
+        <h4 class="topic">Topic</h4>
+    
+        <div class="card">
+            <h5>Comando fictício 1</h5>
+            <article>
+                <pre>
+                    <code>
+                        <span>Texto fictício 1</span>
+                    </code>
+                </pre>
+            </article>
+        </div>
 
-    <section>
-        <h4>Comando fictício N</h4>
-        <article>
-            <pre>
-                <code>
-                    <span>Outro Texto fictício N</span>
-                </code>
-            </pre>
-        </article>
+        <div class="card">
+            <h5>Comando fictício N</h5>
+            <article>
+                <pre>
+                    <code>
+                        <span>Outro Texto fictício N</span>
+                    </code>
+                </pre>
+            </article>
+        </div>
     </section>
              
     <footer>
@@ -48,3 +53,35 @@
     </footer>
 </body>
 </html>
+
+<!-- amarelo #cebd00
+verde #238b76
+vermelho #c32047
+preto #19171a
+
+background azul #2f72a2
+
+background cards #b3cdca -->
+
+<!-- {
+    "titulo": "Axeet",
+    "palette": "default",
+    "autor": "mich",
+    "cheatsheet": "RedHat",
+    "topic": [
+        {
+        "topicName": "Manipulando Openshift",
+        "cheat": [
+            {
+                "codigoCheat": "oc get ns",
+                "descricaoCheat": "pegando o name space openshift"
+            },
+            {
+                "codigoCheat": "oc select project [nome do projeto]",
+                "descricaoCheat" : "entra dentro de umprojeto no openshift"
+            }
+        ]
+        }
+    ]
+}
+ -->
