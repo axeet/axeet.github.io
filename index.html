@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<header class="card-header mb-4">
+<header class="card-header mb-1">
     <nav class="navbar navbar-dark bg-dark">
         <div class="containner-fluid" id="nav-container">
             <a href="#" class="navbar-brand"><i class="fa fa-columns" aria-hidden="true"></i> Axeet</a>
@@ -23,68 +23,63 @@
 
 
 <main>
-    <form>
-        <div class="col-lg-12">
-            <div class="container-lg">
-                <div class="row justify-content-md-center">
-                    <div class="mb-3 col-lg-5">
+    <form class="main-content" style="padding-left: 30px;">
+        <div class="container px-4 text-center">
+            <div class="row gx-5">
 
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="themeTitle" aria-label="themeTitle">
-                                <option value="" selected>Escolha o tema</option>
-                                <option value="axeet">Axeet</option>
-                                <option value="redhat">Red hat</option>
-                                <option value="fedora">Fedora</option>
-                                <option value="ubuntu">Ubuntu</option>
-                                <option value="dracula">Dracula</option>
-                            </select>
-                            <label for="themeTitle">Tema </label>
-                        </div>
+                <div class="col-4 p-4">
 
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="titleCheat">
-                            <label for="titleCheat">Titulo</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="author">
-                            <label for="author">Author</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="cheatSheet">
-                            <label for="cheatSheet">Cheat Sheet</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="topicName">
-                            <label for="topicName">Tópico</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="codeCheat">
-                            <label for="codeCheat">Código</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="description">
-                            <label for="description">Descrição</label>
-                        </div>
-
-                        <div class="d-grid gap-2 col-6 mx-auto">
-                            <button type="button" class="btn btn-outline-danger">Gerar</button>
-                        </div>
+                    <div class="form-floating mb-3" style="margin-top: 10px;">
+                        <select class="form-select" id="themeTitle" aria-label="themeTitle">
+                            <option value="" selected>Escolha o tema</option>
+                            <option value="axeet">Axeet</option>
+                            <option value="redhat">Red hat</option>
+                            <option value="fedora">Fedora</option>
+                            <option value="ubuntu">Ubuntu</option>
+                            <option value="dracula">Dracula</option>
+                        </select>
+                        <label for="themeTitle">Tema </label>
                     </div>
 
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="titleCheat" placeholder="Axeet">
+                        <label for="titleCheat">Titulo</label>
+                    </div>
 
-                    <div class="col-lg-6">
-                        <label for="axeetScript">Axeet Script</label>
-                        <div class="input-group">
-                            <textarea class="form-control" id="axeetScript" style="height: 500px"
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="author" placeholder="AxeetUser">
+                        <label for="author">Author</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="cheatSheet" placeholder="Linux">
+                        <label for="cheatSheet">Cheat Sheet</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="topicName" placeholder="files">
+                        <label for="topicName">Tópico</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="codeCheat" placeholder="ls">
+                        <label for="codeCheat">Código</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="description" placeholder="Ver Pastas">
+                        <label for="description">Descrição</label>
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button type="button" class="btn btn-outline-danger">Gerar</button>
+                    </div>
+                </div>
+                <div class="col-8 p-4">
+                    <label for="axeetScript">Axeet Script</label>
+                    <div class="input-group">
+                            <textarea class="form-control md-textarea" rows="5" id="axeetScript" style="height: 725px"
                                       placeholder=""></textarea>
-                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
