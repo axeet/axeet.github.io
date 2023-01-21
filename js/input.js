@@ -31,36 +31,3 @@ form.addEventListener('input', function() {
     document.getElementById("axeetScript").innerHTML = jsonScript;
 });
 
-function write() {
-
-
-}
-
-
-function write() {
-
-    var titleCheat = document.getElementById("titleCheat").value;
-
-    var jsonScript = '{\n' +
-        '    "titulo": "' + titleCheat + '",\n' +
-        '    "palette": "' + theme + '",\n' +
-        '    "autor": "' + author + '",\n' +
-        '    "cheatsheet": "' + cheatSheet + '",\n' +
-        '    "topic": [\n' +
-        '        {\n' +
-        '        "topicName": "' + topicName + '",\n' +
-        '        "cheat": [\n' +
-        '            {\n' +
-        '                "codigoCheat": "' + codeCheat + '",\n' +
-        '                "descricaoCheat": "' + description + '"\n' +
-        '            }\n' +
-        '        ]\n' +
-        '        }\n' +
-        '    ]\n' +
-        '}'
-
-    document.getElementById("axeetScript").innerHTML = jsonScript;
-}
-
-
-
