@@ -1,77 +1,135 @@
-var form = document.querySelector('main');
-form.addEventListener('input', function() {
-    var titleCheat = document.getElementById("titleCheat").value;
-    var theme = document.getElementById('themeTitle').value
-    var author = document.getElementById("author").value;
-    var cheatSheet = document.getElementById("cheatSheet").value;
-    var topicName = document.getElementById("topicName").value;
-    var codeCheat = document.getElementById("codeCheat").value;
-    var description = document.getElementById("description").value;
+class Axeet {
+    constructor(theme, titleCheat, author, cheatSheet) {
+        this.theme = "";
+        this.titleCheat = "";
+        this.author = "";
+        this.cheatSheet = "";
+        this.topic = [];
+    }
+    addTopic(topicName, cheat){
+        let newTopic = new Topics(topicName, cheat);
+        this.topic.push(newTopic);
+        return newTopic
+    }
+}
+class Topics {
+    constructor(topicName) {
+        this.topicName = topicName;
+        this.cheat = [];
+    }
+    addCheat (codeCheat, description){
+        let newCheat = new Cheats(codeCheat, description);
+        this.cheat.push(newCheat);
+        return newCheat;
+    }
+}
+class Cheats {
+    constructor(codeCheat, description) {
+        this.codeCheat = codeCheat;
+        this.description = description;
+    }
+}
 
+const form = document.querySelector('main');
 
-    var jsonScript = '{\n' +
-        '    "titulo": "' + titleCheat + '",\n' +
-        '    "theme": "' + theme + '",\n' +
-        '    "author": "' + author + '",\n' +
-        '    "cheatsheet": "' + cheatSheet + '",\n' +
-        '    "topic": [\n' +
-        '        {\n' +
-        '        "topicName": "' + topicName + '",\n' +
-        '        "cheat": [\n' +
-        '            {\n' +
-        '                "codeCheat": "' + codeCheat + '",\n' +
-        '                "descriptionCheat": "' + description + '"\n' +
-        '            }\n' +
-        '        ]\n' +
-        '        }\n' +
-        '    ]\n' +
-        '}'
+form.addEventListener('input', function (){
 
-    document.getElementById("axeetScript").innerHTML = jsonScript;
+    if ((sessionStorage.getItem("axeet")) === null){
+        console.log("-- não possui dados no session storage---")
+        const axeet = getAxeet();
+        document.getElementById("axeetScript").innerHTML = JSON.stringify(axeet, undefined, 8);
+    }else {
+        console.log("-- carregando dados do session storage")
+        const axeet = JSON.parse(sessionStorage.getItem("axeet"))
+        document.getElementById("axeetScript").innerHTML = JSON.stringify(axeet, undefined, 8);
+    }
+
 });
 
-function createField(){
-    var divCheat = document.createElement('div');
-    divCheat.className = 'form-floating mb-3';
-    divCheat.id = 'bodyCheat'
+function getAxeet() {
 
-    var divDescription = document.createElement('div');
-    divDescription.className = 'form-floating mb-3';
-    divDescription.id = 'bodyDescription'
+    var axeet = new Axeet();
+    var topic = new Topics();
+    var cheat = new Cheats();
 
-    var fieldCode = document.createElement('input');
-    fieldCode.type = 'text';
-    fieldCode.id = 'codeCheatField';
-    fieldCode.placeholder = 'ls';
-    fieldCode.className = 'form-control';
+    axeet.titleCheat = document.getElementById("titleCheat").value;
+    axeet.theme = document.getElementById('themeTitle').value
+    axeet.author = document.getElementById("author").value;
+    axeet.cheatSheet = document.getElementById("cheatSheet").value;
+    axeet.topic = topic;
+    topic.topicName = document.getElementById("topicName").value
+    topic.cheat = cheat;
+    cheat.codeCheat = document.getElementById("codeCheat").value;
+    cheat.description = document.getElementById("description").value;
 
-    var fieldDescription = document.createElement('input');
-    fieldDescription.type = 'text';
-    fieldDescription.id = 'descriptionField';
-    fieldDescription.placeholder = 'ver Pastas'
-    fieldDescription.className = 'form-control';
+    return axeet;
+}
 
-    var labelCheat = document.createElement('label');
-    labelCheat.htmlFor = 'codeCheatField';
-    labelCheat.innerHTML = 'Cógio';
+function updateAxeet(AxeetDTO, codeCheat, description, topicName) {
 
-    var labelDescription = document.createElement('label');
-    labelDescription.htmlFor = 'descriptionField';
-    labelDescription.innerHTML = 'Descrição';
+    var axeet = new Axeet();
+    var topic = new Topics();
+    var cheat = new Cheats();
 
-    var container = document.getElementById('cheat');
-    container.appendChild(divCheat);
+    axeet.titleCheat = AxeetDTO.titleCheat;
+    axeet.theme = AxeetDTO.theme;
+    axeet.author = AxeetDTO.author;
+    axeet.cheatSheet = AxeetDTO.cheatSheet;
+    axeet.topic = topic;
 
-    var container = document.getElementById('bodyCheat');
-    container.appendChild(fieldCode);
-    container.appendChild(labelCheat)
+    if (topicName === ""){
+        topic.topicName = AxeetDTO.topic.topicName;
+        topic.cheat = cheat;
+    }else {
+        axeet.addTopic(topicName);
+    }
+    if ((codeCheat || description) === ""){
+        cheat.codeCheat = AxeetDTO.topic.cheat.codeCheat;
+        cheat.description = AxeetDTO.topic.cheat.description;
+    }else{
+        cheat.codeCheat = AxeetDTO.topic.cheat.codeCheat;
+        cheat.description = AxeetDTO.topic.cheat.description;
+        topic.addCheat(codeCheat, description);
+    }
+    console.log(axeet);
+    // return axeet;
+}
 
-    var container = document.getElementById('cheat');
-    container.appendChild(divDescription);
 
-    var container = document.getElementById('bodyDescription');
-    container.appendChild(fieldDescription);
-    container.appendChild(labelDescription);
+function createCheat() {
+
+    if ((sessionStorage.getItem("axeet")) === null){
+         var axeet = getAxeet();
+         sessionStorage.setItem("axeet", JSON.stringify(axeet));
+
+         document.getElementById("codeCheat").value = "";
+         document.getElementById("description").value = "";
+    }else {
+        var codeCheat = document.getElementById("codeCheat").value;
+        var description = document.getElementById("description").value;
+
+        var axeetS = JSON.parse(sessionStorage.getItem("axeet"));
+
+        // console.log(axeetS.topic.addCheat(codeCheat, description));
+
+        updateAxeet(axeetS, codeCheat, description)
+
+        // console.log(axeet);
+        //
+        // axeet.topic.addCheat()
+        //
+        // console.log(axeet);
+
+
+        // var topic = new Topics();
+        //
+        // topic.addCheat(cheat.codeCheat, cheat.description);
+        //
+        // axeet.addTopic(topic.topicName, topic.cheat);
+    }
+
+
+   // var axeet =  populaAxeet(topic);
 
 }
 
