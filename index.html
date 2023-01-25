@@ -10,7 +10,7 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
-<body>
+<body style="background-color: rgba(var(--axeet-green), var(--axeet-yellow), var(--axeet-red)) !important;" >
 
 <header class="card-header mb-1">
     <nav class="navbar navbar-dark bg-dark">
@@ -54,14 +54,19 @@
                         <input type="text" class="form-control" id="cheatSheet" placeholder="Linux">
                         <label for="cheatSheet">Cheat Sheet</label>
                     </div>
+                    <div class="mb-1 d-grid gap-2">
 
+                        <button class="btn btn-outline-success" type="button" onclick="createTopic()">
+                            Acrescentar topico
+                            <i class="bi bi-journal-plus"></i>
+                        </button>
+                    </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="topicName" placeholder="files">
                         <label for="topicName">Tópico</label>
                     </div>
-                    <div class="mb-1">
-
-                        <button class="btn btn-outline-success" type="button" onclick="createField()">
+                    <div class="mb-1 d-grid gap-2">
+                        <button class="btn btn-outline-warning" type="button" onclick="createCheat()">
                             Acrescentar Cheat
                             <i class="bi bi-journal-plus"></i>
                         </button>
@@ -79,7 +84,7 @@
                         </div>
                     </div>
                     <div class="d-grid gap-2">
-                        <button type="button" class="btn btn-outline-danger">Gerar <i class="bi bi-braces"></i></button>
+                        <button type="reset" class="btn btn-outline-danger">Gerar <i class="bi bi-braces"></i></button>
                     </div>
                 </div>
                 <div class="col-8 p-4">
@@ -107,27 +112,24 @@
 <script src="./js/input.js"></script>
 <script>
     (function () {
+
         document.getElementById('axeetScript').placeholder = '{\n' +
-            '    "titulo": "Axeet",\n' +
-            '    "palette": "axeet",\n' +
-            '    "autor": "Autor",\n' +
-            '    "cheatsheet": "RedHat",\n' +
-            '    "topic": [\n' +
-            '        {\n' +
-            '        "topicName": "Manipulando Openshift",\n' +
-            '        "cheat": [\n' +
-            '            {\n' +
-            '                "codigoCheat": "oc get ns",\n' +
-            '                "descricaoCheat": "pegando o name space openshift"\n' +
-            '            },\n' +
-            '            {\n' +
-            '                "codigoCheat": "oc select project [nome do projeto]",\n' +
-            '                "descricaoCheat" : "entra dentro de umprojeto no openshift"\n' +
-            '            }\n' +
-            '        ]\n' +
-            '        }\n' +
-            '    ]\n' +
-            '}';
+        '"titleCheat": "Axeet",\n' +
+        '"theme": "axeet",\n' +
+        '"author": "Fulano",\n' +
+        '"cheatSheet": "Red Hat",\n' +
+        '"topic": {\n' +
+        '      "topicName": "Openshift",\n' +
+        '      "cheat": {\n' +
+        '            "codeCheat": "oc get ns",\n' +
+        '            "description": "pegando o name space"\n' +
+        '               },\n' +
+        '               {\n' +
+        '             "codeCheat": "oc select project [nome do projeto",\n' +
+        '             "entra dentro de um projeto no openshift"\n' +
+        '               }\n' +
+        '           }\n' +
+        '}';
     })();
 </script>
 </body>
