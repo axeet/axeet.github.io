@@ -8,7 +8,7 @@ class Axeet {
     }
     addTopic(topicName, cheat){
         let newTopic = new Topics(topicName, cheat);
-        this.topic.push(newTopic);
+        this.topic.push([newTopic]);
         return newTopic
     }
 }
@@ -19,7 +19,7 @@ class Topics {
     }
     addCheat (codeCheat, description){
         let newCheat = new Cheats(codeCheat, description);
-        this.cheat.push(newCheat);
+        this.cheat.push([newCheat]);
         return newCheat;
     }
 }
@@ -36,8 +36,10 @@ form.addEventListener('input', function (){
 
     if ((sessionStorage.getItem("axeet")) === null){
         console.log("-- não possui dados no session storage---")
-        const axeet = getAxeet();
-        document.getElementById("axeetScript").innerHTML = JSON.stringify(axeet, undefined, 8);
+        if (document.querySelector("#axeetScript").value === "") {
+            const axeet = getAxeet();
+            document.getElementById("axeetScript").innerHTML = JSON.stringify(axeet, undefined, 8);
+        }
     }else {
         console.log("-- carregando dados do session storage")
         const axeet = JSON.parse(sessionStorage.getItem("axeet"))
@@ -56,12 +58,11 @@ function getAxeet() {
     axeet.theme = document.getElementById('themeTitle').value
     axeet.author = document.getElementById("author").value;
     axeet.cheatSheet = document.getElementById("cheatSheet").value;
-    axeet.topic = topic;
     topic.topicName = document.getElementById("topicName").value
-    topic.cheat = cheat;
     cheat.codeCheat = document.getElementById("codeCheat").value;
     cheat.description = document.getElementById("description").value;
-
+    topic.cheat = [cheat];
+    axeet.topic = [topic];
     return axeet;
 }
 
@@ -98,38 +99,60 @@ function updateAxeet(AxeetDTO, codeCheat, description, topicName) {
 
 function createCheat() {
 
-    if ((sessionStorage.getItem("axeet")) === null){
-         var axeet = getAxeet();
-         sessionStorage.setItem("axeet", JSON.stringify(axeet));
+    let text = document.querySelector("#axeetScript").value;
+    var axeet = JSON.parse(text);
 
-         document.getElementById("codeCheat").value = "";
-         document.getElementById("description").value = "";
+    var codeCheat = document.getElementById("codeCheat").value;
+    var description = document.getElementById("description").value;
+
+    var countTopic = axeet.topic.length;
+
+    if (countTopic > 1){
+        for (i = 0; countTopic > i; i++){
+            console.log("Teste")
+            for (var cheat in axeet.topic[countTopic-1].cheat.value){
+                axeet.topic[countTopic-1].cheat[i+1] = new Cheats("", "")
+                console.log(axeet);
+            }
+            axeet.topic[i].cheat[i+1] = new Cheats("", "")
+        }
     }else {
-        var codeCheat = document.getElementById("codeCheat").value;
-        var description = document.getElementById("description").value;
+        for (i = 0; countTopic > i; i++){
+            console.log("Teste1")
+            for (j = 0; j < axeet.topic[i].cheat.length; j++){
+                console.log(j);
+            }
+            axeet.topic[i].cheat[j] = new Cheats(codeCheat, description)
+            console.log(axeet);
 
-        var axeetS = JSON.parse(sessionStorage.getItem("axeet"));
-
-        // console.log(axeetS.topic.addCheat(codeCheat, description));
-
-        updateAxeet(axeetS, codeCheat, description)
-
-        // console.log(axeet);
-        //
-        // axeet.topic.addCheat()
-        //
-        // console.log(axeet);
-
-
-        // var topic = new Topics();
-        //
-        // topic.addCheat(cheat.codeCheat, cheat.description);
-        //
-        // axeet.addTopic(topic.topicName, topic.cheat);
+        }
     }
 
+    document.getElementById("codeCheat").value = ""
+    document.getElementById("description").value = ""
 
-   // var axeet =  populaAxeet(topic);
+    document.getElementById("axeetScript").innerHTML = JSON.stringify(axeet, undefined, 8);
+
+
+    // var cheatTxt = new Cheats("teste", "agoraVai")
+    // // axeet.topic.cheat.push(cheatTxt)
+    // var cheatTxt2 = new Cheats("teste", "agoraVai2")
+    // // axeet.topic.cheat.push(cheatTxt2)
+    // var cheatTxt3 = new Cheats("teste", "agoraVai3")
+    // // axeet.topic.cheat.push(cheatTxt3)
+    //
+    // console.log();
+    // axeet.topic.cheat.push(cheatTxt, cheatTxt2, cheatTxt3)
+    // console.log(cheatTxt)
+    // console.log(cheatTxt2)
+    // console.log(cheatTxt3)
+    //
+    // var tamanho = axeet.topic.cheat.length;
+    // // const newObj = {
+    // //     ...axeet,
+    // //     topic: [{...axeet.topic[0], cheat: [...axeet.topic[0].cheat, { codigoCheat: "oc select project [nome do projeto]", descricaoCheat: "entra dentro de umprojeto no openshift"}]}]
+    // // }
+    // console.log(tamanho);
 
 }
 
