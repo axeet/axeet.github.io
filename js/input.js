@@ -65,97 +65,57 @@ function getAxeet() {
     axeet.topic = [topic];
     return axeet;
 }
-
-function updateAxeet(AxeetDTO, codeCheat, description, topicName) {
-
-    var axeet = new Axeet();
-    var topic = new Topics();
-    var cheat = new Cheats();
-
-    axeet.titleCheat = AxeetDTO.titleCheat;
-    axeet.theme = AxeetDTO.theme;
-    axeet.author = AxeetDTO.author;
-    axeet.cheatSheet = AxeetDTO.cheatSheet;
-    axeet.topic = topic;
-
-    if (topicName === ""){
-        topic.topicName = AxeetDTO.topic.topicName;
-        topic.cheat = cheat;
-    }else {
-        axeet.addTopic(topicName);
+function percorreCheatList(countTopic, axeet) {
+    if (countTopic > 1) {
+        for (i = 0; countTopic > i; i++) {
+            for (var cheat in axeet.topic[countTopic - 1].cheat.value) {
+                axeet.topic[countTopic - 1].cheat[i + 1] = new Cheats("", "")
+            }
+            axeet.topic[i].cheat[i + 1] = new Cheats("", "")
+        }
+    } else {
+        for (i = 0; countTopic > i; i++) {
+            var countCheat = axeet.topic[i].cheat.length;
+            for (j = 0; j < countCheat; j++) {
+                if (axeet.topic[i].cheat[j + 1] === undefined) {
+                    axeet.topic[i].cheat[j + 1] = new Cheats("", "")
+                }
+            }
+        }
     }
-    if ((codeCheat || description) === ""){
-        cheat.codeCheat = AxeetDTO.topic.cheat.codeCheat;
-        cheat.description = AxeetDTO.topic.cheat.description;
-    }else{
-        cheat.codeCheat = AxeetDTO.topic.cheat.codeCheat;
-        cheat.description = AxeetDTO.topic.cheat.description;
-        topic.addCheat(codeCheat, description);
-    }
-    console.log(axeet);
-    // return axeet;
 }
 
+function novoAddEventListenerPosCreateCheat(axeet, countTopic) {
+    form.removeEventListener('input', form.fn)
+
+    form.addEventListener('input', form.novo_fn = function novo_fn() {
+        for (i = 0; countTopic > i; i++) {
+            var countCheat = axeet.topic[i].cheat.length;
+            for (j = 0; j < countCheat; j++) {
+                var auxCheat = axeet.topic[i].cheat[j];
+                if (axeet.topic[i].cheat[j + 1] === undefined) {
+                    var cheatX = new Cheats
+                    cheatX.codeCheat = document.getElementById("codeCheat").value;
+                    cheatX.description = document.getElementById("description").value;
+                    axeet.topic[i].cheat[j] = cheatX;
+                    document.getElementById("axeetScript").innerHTML = JSON.stringify(axeet, undefined, 8);
+                }
+            }
+        }
+    });
+}
 
 function createCheat() {
 
     let text = document.querySelector("#axeetScript").value;
     var axeet = JSON.parse(text);
-
     var countTopic = axeet.topic.length;
 
-    if (countTopic > 1){
-        for (i = 0; countTopic > i; i++){
-            console.log("Teste")
-            for (var cheat in axeet.topic[countTopic-1].cheat.value){
-                axeet.topic[countTopic-1].cheat[i+1] = new Cheats("", "")
-                console.log(axeet);
-            }
-            axeet.topic[i].cheat[i+1] = new Cheats("", "")
-        }
-    }else {
-        for (i = 0; countTopic > i; i++){
-            var countCheat = axeet.topic[i].cheat.length;
-            console.log("inicio do for")
-            for (j = 0; j < countCheat; j++){
-                console.log(axeet.topic[i].cheat[j]);
-                if(axeet.topic[i].cheat[j+1] === undefined){
-                    axeet.topic[i].cheat[j+1] = new Cheats("", "")
-                }
-            }
-            console.log(j);
-            console.log("fim do for")
-            // axeet.topic[i].cheat[j] = new Cheats(codeCheat, description)
-            console.log(axeet);
-        }
-    }
-
-    form.removeEventListener('input', form.fn)
-
-    form.addEventListener('input', form.novo_fn=function novo_fn(){
-        console.log(axeet)
-        for (i = 0; countTopic > i; i++){
-            console.log("Teste2")
-            var countCheat = axeet.topic[i].cheat.length;
-            for (j = 0; j < countCheat; j++){
-                console.log(Object.entries(axeet.topic[i].cheat[j])
-                // if(Object.entries(axeet.topic[i].cheat[j]) === undefined){
-                //    console.log("este é vazio")
-                //    var cheatX = new Cheats
-                //    cheatX.codeCheat = document.getElementById("codeCheat").value;
-                //    cheatX.description = document.getElementById("description").value;
-
-                //    axeet.topic[i].cheat[j+1] = cheatX;
-
-                //    document.getElementById("axeetScript").innerHTML = JSON.stringify(axeet, undefined, 8);
-                //}
-            }
-        }
-    });
+    percorreCheatList(countTopic, axeet);
+    novoAddEventListenerPosCreateCheat(axeet, countTopic);
 
     document.getElementById("codeCheat").value = ""
     document.getElementById("description").value = ""
-
     document.getElementById("axeetScript").innerHTML = JSON.stringify(axeet, undefined, 8);
 
 }
