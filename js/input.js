@@ -34,15 +34,47 @@ const form = document.querySelector('main');
 
 form.addEventListener('input', function (){
 
-    if ((sessionStorage.getItem("axeet")) === null){
-        console.log("-- não possui dados no session storage---")
-        const axeet = getAxeet();
-        document.getElementById("axeetScript").innerHTML = JSON.stringify(axeet, undefined, 8);
-    }else {
-        console.log("-- carregando dados do session storage")
-        const axeet = JSON.parse(sessionStorage.getItem("axeet"))
-        document.getElementById("axeetScript").innerHTML = JSON.stringify(axeet, undefined, 8);
-    }
+    const x = getAxeet();
+    let code = document.getElementById("editor").innerText;
+    console.log(x);
+
+    console.log(code);
+
+    // {¬
+    //     "titulo":·"Axeet",¬
+    //     "palette":·"default",¬
+    //     "autor":·"mich",¬
+    //     "cheatsheet":·"RedHat",¬
+    //     "topic":·[¬
+    //     ····{¬
+    //     ····"topicName":·"Manipulando·Openshift",¬
+    //     ····"cheat":·[¬
+    //     ········{¬
+    //     ············"codigoCheat":·"oc·get·ns",¬
+    //     ············"descricaoCheat":·"pegando·o·name·space·openshift"¬
+    //     ········},¬
+    //     ········{¬
+    //     ············"codigoCheat":·"oc·select·project·[nome·do·projeto]",¬
+    //     ············"descricaoCheat"·:·"entra·dentro·de·umprojeto·no·openshift"¬
+    //     ········}¬
+    //     ····]¬
+    //     ····}¬
+    //     ]¬
+    // }
+
+    // document.getElementById("editor").innerText = JSON.stringify(x, undefined, 8);
+    document.getElementById("editor").innerText = JSON.stringify(x, undefined, 8);
+
+
+    // if ((sessionStorage.getItem("axeet")) === null){
+    //     console.log("-- não possui dados no session storage---")
+    //     const axeet = getAxeet();
+    //     document.getElementById("axeetScript").innerHTML = JSON.stringify(axeet, undefined, 8);
+    // }else {
+    //     console.log("-- carregando dados do session storage")
+    //     const axeet = JSON.parse(sessionStorage.getItem("axeet"))
+    //     document.getElementById("axeetScript").innerHTML = JSON.stringify(axeet, undefined, 8);
+    // }
 
 });
 
@@ -98,35 +130,77 @@ function updateAxeet(AxeetDTO, codeCheat, description, topicName) {
 
 function createCheat() {
 
-    if ((sessionStorage.getItem("axeet")) === null){
-         var axeet = getAxeet();
-         sessionStorage.setItem("axeet", JSON.stringify(axeet));
+    let code = document.getElementById("editor").innerText;
+    console.log("----- x ------");
+    // console.log(typeof code);
 
-         document.getElementById("codeCheat").value = "";
-         document.getElementById("description").value = "";
-    }else {
-        var codeCheat = document.getElementById("codeCheat").value;
-        var description = document.getElementById("description").value;
+    let obj = JSON.parse(code);
 
-        var axeetS = JSON.parse(sessionStorage.getItem("axeet"));
+    // let a = "a";
+    // let b = "b";
 
-        // console.log(axeetS.topic.addCheat(codeCheat, description));
+    // obj.topic.cheat.codeCheat = a;
+    // obj.topic.cheat.description = b;
 
-        updateAxeet(axeetS, codeCheat, description)
+    // obj.topic.cheat = {"codeCheat": "a", "description": "b"};
+    console.log(obj);
 
-        // console.log(axeet);
-        //
-        // axeet.topic.addCheat()
-        //
-        // console.log(axeet);
+    let incrementcontent = '{"codeCheat": "a", "description": "b"}';
+
+    //document.getElementById("editor").innerText += " " + JSON.stringify(incrementcontent);
+
+    // mesmo utilizando o método assign que cria uma cópia do objeto ta alterando o obj original
+    // let newobj = Object.assign(obj.topic.cheat, incrementcontent);
+
+    //let xcheat = obj.topic.cheat;
+    //xcheat += JSON.parse(incrementcontent);
+
+    let newobj = Object.assign(obj.topic.cheat, JSON.parse(incrementcontent));
+
+    const newObj = {
+        ...obj,
+       topic: [{...obj.topic, cheat: [...obj.topic.cheat, { codigoCheat: "oc select project [nome do projeto]", descricaoCheat : "entra dentro de umprojeto no openshift"}]}]
+   }
+
+    // let newobj = {...obj, cheat: {'codeCheat': 'a', 'description': 'b'};
+    // let newobj = {...obj, cheat: { ...obj.topic.cheat, 'codigoCheat':'a', 'descricao':'b'}};
+    // let newobj = {...obj.topic, cheat: {'codigoCheat': 'a', 'descricao': 'b'}};
+
+    console.log("----- y ------");
+    // console.log(typeof obj.topic.cheat);
+    // console.log(obj.topic);
+    // mesmo utilizando o método assign que cria uma cópia do objeto ta alterando o obj original
+    console.log(newobj);
+
+    // if ((sessionStorage.getItem("axeet")) === null){
+    //      var axeet = getAxeet();
+    //      sessionStorage.setItem("axeet", JSON.stringify(axeet));
+
+    //      document.getElementById("codeCheat").value = "";
+    //      document.getElementById("description").value = "";
+    // }else {
+    //     var codeCheat = document.getElementById("codeCheat").value;
+    //     var description = document.getElementById("description").value;
+
+    //     var axeetS = JSON.parse(sessionStorage.getItem("axeet"));
+
+    //     // console.log(axeetS.topic.addCheat(codeCheat, description));
+
+    //     updateAxeet(axeetS, codeCheat, description)
+
+    //     // console.log(axeet);
+    //     //
+    //     // axeet.topic.addCheat()
+    //     //
+    //     // console.log(axeet);
 
 
-        // var topic = new Topics();
-        //
-        // topic.addCheat(cheat.codeCheat, cheat.description);
-        //
-        // axeet.addTopic(topic.topicName, topic.cheat);
-    }
+    //     // var topic = new Topics();
+    //     //
+    //     // topic.addCheat(cheat.codeCheat, cheat.description);
+    //     //
+    //     // axeet.addTopic(topic.topicName, topic.cheat);
+    // }
 
 
    // var axeet =  populaAxeet(topic);

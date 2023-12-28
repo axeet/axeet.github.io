@@ -9,6 +9,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="lib/codemirror.css">
+    <link rel="stylesheet" href="theme/dracula.css">
+    <script src="lib/codemirror.js"></script>
+    <script src="mode/javascript/javascript.js"></script>
+    <style>
+        /* .v-codemirror {
+        margin: 0px;
+        text-align: left;
+        } */
+    </style>
 </head>
 <body style="background-color: rgba(var(--axeet-green), var(--axeet-yellow), var(--axeet-red)) !important;" >
 
@@ -87,12 +97,61 @@
                         <button type="reset" class="btn btn-outline-danger">Gerar <i class="bi bi-braces"></i></button>
                     </div>
                 </div>
-                <div class="col-8 p-4">
+                <!-- <div class="col-8 p-4">
                     <label for="axeetScript">Axeet Script</label>
                     <div class="input-group">
                             <textarea class="form-control md-textarea" rows="5" id="axeetScript" style="height: 725px"
                                       placeholder=""></textarea>
                     </div>
+                </div> -->
+                                <!-- <div class="col-8 p-4">
+                    <label for="axeetScript">Axeet Script</label>
+                    <div class="input-group">
+                            <textarea class="form-control md-textarea" rows="5" id="axeetScript" style="height: 725px"
+                                      placeholder=""></textarea>
+                    </div>
+                </div> -->
+                <!-- <div class="col-8 p-4">
+                    <label for="axeetScript">Axeet Script</label>
+                    <div class="input-group">
+                            <textarea class="form-control md-textarea" rows="5" id="axeetScript" style="height: 725px"
+                                      placeholder=""></textarea>
+                    </div>
+                </div> -->
+                                <!-- <div class="col-8 p-4">
+                    <label for="axeetScript">Axeet Script</label>
+                    <div class="input-group">
+                            <textarea class="form-control md-textarea" rows="5" id="axeetScript" style="height: 725px"
+                                      placeholder=""></textarea>
+                    </div>
+                </div> -->
+                <div class="col-8 p-4">
+                    <label for="axeetScript">Axeet Script</label>
+<div id="editor" class="input-group">
+    <textarea name="" id="classeditor">
+{
+    "titulo": "Axeet",
+    "palette": "default",
+    "autor": "mich",
+    "cheatsheet": "RedHat",
+    "topic": [
+        {
+        "topicName": "Manipulando Openshift",
+        "cheat": [
+            {
+                "codigoCheat": "oc get ns",
+                "descricaoCheat": "pegando o name space openshift"
+            },
+            {
+                "codigoCheat": "oc select project [nome do projeto]",
+                "descricaoCheat" : "entra dentro de umprojeto no openshift"
+            }
+        ]
+        }
+    ]
+}
+    </textarea>
+</div>
                 </div>
             </div>
         </div>
@@ -132,6 +191,38 @@
         '}';
     })();
 </script>
+<!-- Ace Editor https://github.com/ajaxorg/ace -->
+<!-- <script src="src/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    //let editor = ace.edit("editor");
+    ace.edit("editor", {
+    mode: "ace/mode/json",
+    selectionStyle: "text",
+    theme: "ace/theme/dracula",
+    highlightActiveLine: true,
+    highlightSelectedWord: true,
+    highlightGutterLine: true,
+    showInvisibles: true,
+    readOnly: true
+})
+</script> -->
+<!-- Codemirror https://codemirror.net/5/doc/manual.html -->
+<script>
+    var classeditor = document.querySelector("#classeditor");
+    // var myCodeMirror = CodeMirror.fromTextArea(classeditor);
+    var myCodeMirror = CodeMirror.fromTextArea(classeditor, {
+        mode: 'application/json',
+        theme: 'dracula',
+        lineNumbers: true,
+        // smartIndent: true,
+        // indentUnit: 2,
+        lineWrapping: true,
+        foldGutter: true,
+        gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter', 'CodeMirror-lint-markers'],
+        // autoCloseBrackets: true,
+        // matchBrackets: true,
+        lint: true
+    });
+</script>
 </body>
 </html>
-
