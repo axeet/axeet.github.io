@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./assets/codemirror-5.65.16/theme/dracula.css">
 
     <style>
-        .CodeMirror { boder: 1px solid silver; }
+        .CodeMirror { border: 1px solid silver; }
         .CodeMirror-empty { outline: 1px solid #c22; }
         .CodeMirror-empty.CodeMirror-Placeholder { outline: none; }
         .CodeMirror pre.CodeMirror-Placeholder { color: #999; }
@@ -111,7 +111,32 @@
     </div>
 </footer>
 
+
+
 <!-- Scripts library -->
+<script>
+    (function () {
+
+        document.getElementById('axeetScript').placeholder = '{\n' +
+            '"titleCheat": "Axeet",\n' +
+            '"theme": "axeet",\n' +
+            '"author": "Fulano",\n' +
+            '"cheatSheet": "Red Hat",\n' +
+            '"topic": [\n' +
+            '      {"topicName": "Openshift"},\n' +
+            '      {"cheat": {\n' +
+            '            "codeCheat": "oc get ns",\n' +
+            '            "description": "pegando o name space"\n' +
+            '               },\n' +
+            '               {\n' +
+            '             "codeCheat": "oc select project [nome do projeto]",\n' +
+            '             "description": "entra dentro de um projeto no openshift"\n' +
+            '               }\n' +
+            '           }\n' +
+            ']}';
+    })();
+</script>
+
 <script src="./js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
@@ -122,28 +147,5 @@
 <script src="./assets/codemirror-5.65.16/addon/display/placeholder.js"></script>
 <script src="./js/editor.js"></script>
 <script src="./js/input.js"></script>
-
-<script>
-    (function () {
-
-        document.getElementById('axeetScript').placeholder = '{\n' +
-            '"titleCheat": "Axeet",\n' +
-            '"theme": "axeet",\n' +
-            '"author": "Fulano",\n' +
-            '"cheatSheet": "Red Hat",\n' +
-            '"topic": {\n' +
-            '      "topicName": "Openshift",\n' +
-            '      "cheat": {\n' +
-            '            "codeCheat": "oc get ns",\n' +
-            '            "description": "pegando o name space"\n' +
-            '               },\n' +
-            '               {\n' +
-            '             "codeCheat": "oc select project [nome do projeto",\n' +
-            '             "entra dentro de um projeto no openshift"\n' +
-            '               }\n' +
-            '           }\n' +
-            '}';
-    })();
-</script>
 </body>
 </html>
