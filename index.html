@@ -116,24 +116,22 @@
 <!-- Scripts library -->
 <script>
     (function () {
-
         document.getElementById('axeetScript').placeholder = '{\n' +
             '"titleCheat": "Axeet",\n' +
             '"theme": "axeet",\n' +
             '"author": "Fulano",\n' +
             '"cheatSheet": "Red Hat",\n' +
             '"topic": [\n' +
-            '      {"topicName": "Openshift"},\n' +
-            '      {"cheat": {\n' +
-            '            "codeCheat": "oc get ns",\n' +
-            '            "description": "pegando o name space"\n' +
-            '               },\n' +
-            '               {\n' +
-            '             "codeCheat": "oc select project [nome do projeto]",\n' +
-            '             "description": "entra dentro de um projeto no openshift"\n' +
-            '               }\n' +
-            '           }\n' +
-            ']}';
+            '      {"topicName": "Openshift",\n' +
+            '      "cheat": [\n' +
+            '            {"codeCheat": "oc get ns",\n' +
+            '            "description": "pegando o name space"},\n' +
+            '             {"codeCheat": "oc select project [nome do projeto]",\n' +
+            '             "description": "entra dentro de um projeto no openshift"}\n' +
+            '           ]\n' +
+            '       }\n' +
+            '    ]\n' +
+            '}';
     })();
 </script>
 
