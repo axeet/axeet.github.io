@@ -36,7 +36,7 @@ form.addEventListener('input', function (){
 
     const x = getAxeet();
     // let code = document.getElementById("axeetScript").innerText;
-    console.log(x);
+    // console.log(x);
 
     // console.log(code);
 
@@ -63,12 +63,9 @@ form.addEventListener('input', function (){
     // }
 
     // document.getElementById("editor").innerText = JSON.stringify(x, undefined, 8);
-    console.log("antes do inject");
-    console.log(JSON.stringify(x, undefined, 8))
-    console.log(editor);
+
     editor.setValue(JSON.stringify(x, undefined, 8));
-    console.log("depois do inject");
-    console.log(JSON.stringify(x, undefined, 8))
+
 
     // if ((sessionStorage.getItem("axeet")) === null){
     //     console.log("-- não possui dados no session storage---")
@@ -140,10 +137,16 @@ function novoAddEventListenerPosCreateCheat(axeet, countTopic) {
     });
 }
 
+function percorreTopicList() {
+}
+
+function novoAddEventListenerPosCreateTopic() {
+}
+
 function createCheat() {
 
     let text = editor.getValue();
-    console.log(text);
+    // console.log(text);
     var axeet = JSON.parse(text);
     var countTopic = axeet.topic.length;
 
@@ -158,6 +161,17 @@ function createCheat() {
 
 function createTopic() {
 
-    console.log("implantando createTopic")
+    let text = editor.getValue();
+    var axeet = JSON.parse(text);
+    var countTopic = axeet.topic.length;
+    console.log(text);
+    console.log(axeet);
+    console.log(countTopic);
+
+    percorreTopicList()
+    novoAddEventListenerPosCreateTopic()
+
+    document.getElementById("topicName").value = ""
+
 
 }
