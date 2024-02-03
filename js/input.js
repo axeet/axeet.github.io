@@ -175,3 +175,17 @@ function createTopic() {
 
 
 }
+
+function editAxeetScript(){
+    let content = editor.getValue();
+
+    // console.log(content)
+    // document.getElementById("axeetScriptModal").innerHTML = content;
+
+    editorModal.setValue(content);
+
+    setTimeout(function() {
+        editorModal.refresh();
+    },1);
+
+}
