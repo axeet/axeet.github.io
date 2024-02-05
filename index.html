@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./assets/codemirror-5.65.16/lib/codemirror.css">
     <link rel="stylesheet" href="./assets/codemirror-5.65.16/theme/dracula.css">
     <link rel="stylesheet" href="./css/inputsStyle/inputStyle.css">
+    <link rel="stylesheet" href="./css/inputsStyle/editorStyle.css">
 
     <style>
         .CodeMirror { border: 1px solid silver; }
@@ -114,13 +115,13 @@
                     <div id="cheat" class="mb-3"
                          style="width: 394px; height: 150px; overflow-y: scroll; border: yellow">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control input-alt input" id="codeCheat" placeholder="ls">
+                            <input type="text" class="form-control input-alt" id="codeCheat" placeholder="ls">
                             <span class="input-border input-border-alt"></span>
                             <label for="codeCheat">Código</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control input-alt input" id="description" placeholder="Ver Pastas">
+                            <input type="text" class="form-control input-alt" id="description" placeholder="Ver Pastas">
                             <span class="input-border input-border-alt"></span>
                             <label for="description">Descrição</label>
                         </div>
@@ -130,11 +131,23 @@
                     </div>
                 </div>
                 <div class="col-8 p-4">
-                    <!-- aqui inicia o editor --->
-                    <textarea id="axeetScript" name="axeetScript" ></textarea>
+                    <div class="tools">
+                        <div class="circle">
+                            <span class="red box"></span>
+                        </div>
+                        <div class="circle">
+                            <span class="yellow box"></span>
+                        </div>
+                        <div class="circle">
+                            <span class="green box"></span>
+                        </div>
+                    </div>
+                    <div class="card_content">
+                        <!-- aqui inicia o editor --->
+                        <textarea id="axeetScript" name="axeetScript" ></textarea>
+                    </div>
                 </div>
             </div>
-        </div>
     </form>
 </main>
 <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
