@@ -137,16 +137,39 @@ function novoAddEventListenerPosCreateCheat(axeet, countTopic) {
     });
 }
 
-function percorreTopicList() {
+function percorreTopicList(countTopic, axeet) {
+    for (i = 0; countTopic > i; i++){
+        console.log(axeet.topic[i])
+        for (var topic in axeet.topic[i].value){
+            axeet.topic[i + 1] = new Topics("", new Cheats("", ""))
+        }
+        // axeet.topic[i] = new Topics("", new Cheats("", ""))
+    }
 }
 
-function novoAddEventListenerPosCreateTopic() {
+function novoAddEventListenerPosCreateTopic(countTopic, axeet) {
+    form.removeEventListener('input', form.fn)
+
+    form.addEventListener('input', form.novo_fn = function novo_fn(){
+        for (i = 0; countTopic > i; i++){
+            var auxtopic = axeet.topic[i]
+
+            if (axeet.topic[i + 1] === undefined){
+                var topicX = new Topics
+
+                topicX.topicName = document.getElementById("topicName").value
+                topicX.cheat =  axeet.topic[i].cheat
+                axeet.topic[i] = topicX;
+                editor.setValue(JSON.stringify(axeet, undefined, 8))
+            }
+        }
+    })
+
 }
 
 function createCheat() {
 
     let text = editor.getValue();
-    // console.log(text);
     var axeet = JSON.parse(text);
     var countTopic = axeet.topic.length;
 
@@ -164,14 +187,14 @@ function createTopic() {
     let text = editor.getValue();
     var axeet = JSON.parse(text);
     var countTopic = axeet.topic.length;
-    console.log(text);
-    console.log(axeet);
-    console.log(countTopic);
 
-    percorreTopicList()
-    novoAddEventListenerPosCreateTopic()
+    percorreTopicList(countTopic, axeet)
+    novoAddEventListenerPosCreateTopic(countTopic, axeet)
 
     document.getElementById("topicName").value = ""
+    document.getElementById("codeCheat").value = ""
+    document.getElementById("description").value = ""
+    editor.setValue(JSON.stringify(axeet, undefined, 8));
 
 
 }
