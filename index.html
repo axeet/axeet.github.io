@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./assets/codemirror-5.65.16/theme/dracula.css">
     <link rel="stylesheet" href="./css/inputsStyle/inputStyle.css">
     <link rel="stylesheet" href="./css/inputsStyle/editorStyle.css">
+    <link rel="stylesheet" href="./assets/codemirror-5.65.16/addon/display/fullscreen.css">
 
     <style>
         .CodeMirror { border: 1px solid silver; }
@@ -34,35 +35,15 @@
                 <!-- <button type="button" class="btn btn-outline-light">Toggle Dark Theme</button> -->
                 <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editAxeetScript()">Edit Axeet Script</button>
             </div>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editando Axeet Script</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body" id="modal-body">
-                        <textarea id="axeetScriptModal" name="axeetScriptModal"></textarea>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
         </nav>
     </header>
 
 
-<main>
+    <main>
     <form class="main-content">
         <div class="container px-4">
             <div class="row gx-5">
                 <div class="col-4 p-4">
-
                     <div class="form-floating mb-3" style="margin-top: 10px;">
                         <select class="form-select input-alt" id="themeTitle" aria-label="themeTitle">
                             <option value="" selected>Escolha o tema</option>
@@ -94,17 +75,18 @@
                         <label for="cheatSheet">Cheat Sheet</label>
                     </div>
                     <div class="mb-1 d-grid gap-2">
-
                         <button class="btn btn-outline-success" type="button" onclick="createTopic()">
                             Acrescentar topico
                             <i class="bi bi-journal-plus"></i>
                         </button>
                     </div>
+
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control input-alt" id="topicName" placeholder="files">
                         <span class="input-border input-border-alt"></span>
                         <label for="topicName">Tópico</label>
                     </div>
+
                     <div class="mb-1 d-grid gap-2">
                         <button class="btn btn-outline-warning" type="button" onclick="createCheat()">
                             Acrescentar Cheat
@@ -112,8 +94,7 @@
                         </button>
                     </div>
 
-                    <div id="cheat" class="mb-3"
-                         style="width: 394px; height: 150px; overflow-y: scroll; border: yellow">
+                    <div id="cheat" class="form-floating mb-3">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control input-alt" id="codeCheat" placeholder="ls">
                             <span class="input-border input-border-alt"></span>
@@ -148,7 +129,27 @@
                     </div>
                 </div>
             </div>
+        </div>
     </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-xl-down">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Editando Axeet Script</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <textarea id="axeetScriptModal" name="axeetScriptModal"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Atualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
     <div class="container text-center">
@@ -189,6 +190,7 @@
 <script src="./assets/codemirror-5.65.16/mode/javascript/javascript.js"></script>
 <script src="./assets/codemirror-5.65.16/addon/display/placeholder.js"></script>
 <script src="./assets/codemirror-5.65.16/addon/display/autorefresh.js"></script>
+<script src="./assets/codemirror-5.65.16/addon/display/fullscreen.js"></script>
 <script src="./js/editor.js"></script>
 <script src="./js/editorModal.js"></script>
 <script src="./js/input.js"></script>
