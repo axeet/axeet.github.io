@@ -7,5 +7,6 @@ var editorModal = CodeMirror.fromTextArea(document.getElementById("axeetScriptMo
     theme: "dracula"
 });
 
-// var width = window.innerWidth;
-// editorModal.setSize(0.5*width, 0.5*width);
+var width = window.innerWidth;
+editorModal.setSize(null, 0.8*width);
+editorModal.focus()
