@@ -1,89 +1,64 @@
-function app (){
-    get_input_value();
+function generateCheatSheet() {
+    var {axeet, countTopic} = getEditorValues();
+    alert(JSON.stringify(axeet))
 }
 
-function get_input_value (){
-    let json = document.querySelector('textarea[name=input]').value
-    const obj = JSON.parse(json);
+function createTopic() {
 
-    //console.log(obj.name);
+    var {axeet, countTopic} = getEditorValues();
 
-    //console.log(Object.values(obj)[0]);
+    percorreTopicList(countTopic, axeet)
 
-    console.log(obj.name);
-    console.log(obj.palette);
+    document.getElementById("topicName").value = ""
+    document.getElementById("codeCheat").value = ""
+    document.getElementById("description").value = ""
+    editor.setValue(JSON.stringify(axeet, undefined, 2));
 
-
-switch (obj.palette) {
-    case fedora:
-        var cor = "fedora";
-        break;
-    case ubuntu:
-        var cor = "ubuntu";
-        break;
-    case redhat:
-        var cor = "redhat";
-        break;
-    case dracula:
-        var cor = "dracula";
-        break;
-    default:
-        var cor = "default";
-        break;
 }
 
+function createCheat() {
 
+    var {axeet, countTopic} = getEditorValues();
 
-    console.log(obj.title);
-    console.log(" ");
+    percorreCheatList(countTopic, axeet);
 
-    for (let i = 3; i < Object.keys(obj).length; i++) {
-        console.log(Object.keys(obj)[i] + ": " + Object.values(obj)[i]);
+    document.getElementById("codeCheat").value = ""
+    document.getElementById("description").value = ""
+    editor.setValue(JSON.stringify(axeet, undefined, 2));
+
+}
+
+function percorreTopicList(countTopic, axeet) {
+    for (i = 0; countTopic > i; i++){
+        for (var topic in axeet.topic[i]){
+            if (axeet.topic[i + 1] === undefined){
+                axeet.topic[i + 1] = new Topics("")
+                axeet.topic[i + 1].cheat[0] = new Cheats("", "")
+            }
+        }
+        // axeet.topic[i] = new Topics("", new Cheats("", ""))
     }
 }
 
-/* 
-# Valor test a ser inserido na textarea
-
-{
-  "name": "Cheatsheet do vini",
-  "palette": "default",
-  "title": "RHCSA",
-  "cheat": [ {
-            "systemd": "Configuração e controle de sistemas Linux",
-            "man systemd.unit": "Para mais informações",
-            "systemctl list-units": "Mostra todas unidades ativas e carregadas"
-  }]
-} 
-*/
-
-/* {
-    "titulo": "Axeet",
-    "palette": "default",
-    "autor": "mich",
-    "cheatsheet": "RedHat",
-    "topic": [
-        {
-        "topicName": "Manipulando Openshift",
-        "cheat": [
-            {
-                "codigoCheat": "oc get ns",
-                "descricaoCheat": "pegando o name space openshift"
-            },
-            {
-                "codigoCheat": "oc select project [nome do projeto]",
-                "descricaoCheat" : "entra dentro de umprojeto no openshift"
+function percorreCheatList(countTopic, axeet) {
+    console.log(countTopic)
+    if (countTopic > 1) {
+        for (i = 0; countTopic > i; i++) {
+            for (var cheat in axeet.topic[countTopic - 1].cheat.value) {
+                axeet.topic[countTopic - 1].cheat[i + 1] = new Cheats("", "")
             }
-        ]
+            axeet.topic[i].cheat[i + 1] = new Cheats("", "")
         }
-    ]
-} */
-
-/* obj.title = Axeet
-
-obj.cheat.codigoCheat[0] = oc get ns
-
-obj.cheat.descricaoCheat[0] = pegando o name space openshift */
-
-
-
+    } else {
+        for (i = 0; countTopic > i; i++) {
+            var countCheat = axeet.topic[i].cheat.length;
+            console.log(countCheat)
+            for (j = 0; j < countCheat; j++) {
+                console.log(axeet.topic[i].cheat[j + 1])
+                if (axeet.topic[i].cheat[j + 1] === undefined) {
+                    axeet.topic[i].cheat[j + 1] = new Cheats("", "")
+                }
+            }
+        }
+    }
+}
