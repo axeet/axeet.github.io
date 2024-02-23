@@ -111,7 +111,54 @@ function editAxeetScript(){
     setTimeout(function() {
         editorModal.refresh();
     },1);
+}
 
+function isJSON(text){
+    if (typeof text!=="string"){
+        return false;
+    }
+    try{
+        var json = JSON.parse(text);
+        return (typeof json === 'object');
+    }
+    catch (error){
+        return false;
+    }
+}
+
+function saveEditedAxeetScript(){
+    let originalContent = editor.getValue();
+    let modalContent = editorModal.getValue();
+
+    let originalTitleCheat = document.getElementById("titleCheat").value
+    let originalThemeTitle = document.getElementById('themeTitle').value
+    let originalAuthor = document.getElementById("author").value
+    let originalCheatSheet = document.getElementById("cheatSheet").value
+    let originalTopicName = document.getElementById("topicName").value
+    let originalCodeCheat = document.getElementById("codeCheat").value
+    let originalDescription = document.getElementById("description").value
+
+    if(isJSON(modalContent)) {
+        document.getElementById("titleCheat").value = ""
+        document.getElementById('themeTitle').value = ""
+        document.getElementById("author").value = ""
+        document.getElementById("cheatSheet").value = ""
+        document.getElementById("topicName").value = ""
+        document.getElementById("codeCheat").value = ""
+        document.getElementById("description").value = ""
+
+        editor.setValue(modalContent);
+    } else {
+        document.getElementById("titleCheat").value = originalTitleCheat
+        document.getElementById('themeTitle').value = originalThemeTitle
+        document.getElementById("author").value = originalAuthor
+        document.getElementById("cheatSheet").value = originalCheatSheet
+        document.getElementById("topicName").value = originalTopicName
+        document.getElementById("codeCheat").value = originalCodeCheat
+        document.getElementById("description").value = originalDescription
+
+        editor.setValue(originalContent);
+    }
 }
 
 function novoAddEventListenerPosCreateTopic(countTopic, axeet) {

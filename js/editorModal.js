@@ -8,5 +8,5 @@ var editorModal = CodeMirror.fromTextArea(document.getElementById("axeetScriptMo
 });
 
 var width = window.innerWidth;
-editorModal.setSize(null, 0.8*width);
 editorModal.focus()
+editorModal.setSize(null, 0.3*width);
