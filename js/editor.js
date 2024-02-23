@@ -8,4 +8,4 @@ var editor = CodeMirror.fromTextArea(document.getElementById("axeetScript"), {
 });
 
 var width = window.innerWidth;
-editor.setSize(0.6*width, 0.6*width);
+editor.setSize(0.5*width, 0.4*width);
