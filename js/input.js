@@ -64,7 +64,7 @@ form.addEventListener('input', function (){
 
     // document.getElementById("editor").innerText = JSON.stringify(x, undefined, 8);
 
-    editor.setValue(JSON.stringify(x, undefined, 8));
+    editor.setValue(JSON.stringify(x, undefined, 2));
 
 
     // if ((sessionStorage.getItem("axeet")) === null){
@@ -81,19 +81,22 @@ form.addEventListener('input', function (){
 
 function getAxeet() {
 
+    var texte =  editor.getValue();
+
     var axeet = new Axeet();
     var topic = new Topics();
     var cheat = new Cheats();
 
-    axeet.titleCheat = document.getElementById("titleCheat").value;
-    axeet.theme = document.getElementById('themeTitle').value
-    axeet.author = document.getElementById("author").value;
-    axeet.cheatSheet = document.getElementById("cheatSheet").value;
-    topic.topicName = document.getElementById("topicName").value
-    cheat.codeCheat = document.getElementById("codeCheat").value;
-    cheat.description = document.getElementById("description").value;
-    topic.cheat = [cheat];
-    axeet.topic = [topic];
+        axeet.titleCheat = document.getElementById("titleCheat").value;
+        axeet.theme = document.getElementById('themeTitle').value
+        axeet.author = document.getElementById("author").value;
+        axeet.cheatSheet = document.getElementById("cheatSheet").value;
+        topic.topicName = document.getElementById("topicName").value
+        cheat.codeCheat = document.getElementById("codeCheat").value;
+        cheat.description = document.getElementById("description").value;
+        topic.cheat = [cheat];
+        axeet.topic = [topic];
+
     return axeet;
 }
 
@@ -124,13 +127,12 @@ function novoAddEventListenerPosCreateCheat(axeet, countTopic) {
         for (i = 0; countTopic > i; i++) {
             var countCheat = axeet.topic[i].cheat.length;
             for (j = 0; j < countCheat; j++) {
-                var auxCheat = axeet.topic[i].cheat[j];
                 if (axeet.topic[i].cheat[j + 1] === undefined) {
                     var cheatX = new Cheats
                     cheatX.codeCheat = document.getElementById("codeCheat").value;
                     cheatX.description = document.getElementById("description").value;
                     axeet.topic[i].cheat[j] = cheatX;
-                    editor.setValue(JSON.stringify(axeet, undefined, 8));
+                    editor.setValue(JSON.stringify(axeet, undefined, 2));
                 }
             }
         }
@@ -139,9 +141,11 @@ function novoAddEventListenerPosCreateCheat(axeet, countTopic) {
 
 function percorreTopicList(countTopic, axeet) {
     for (i = 0; countTopic > i; i++){
-        console.log(axeet.topic[i])
-        for (var topic in axeet.topic[i].value){
-            axeet.topic[i + 1] = new Topics("", new Cheats("", ""))
+        for (var topic in axeet.topic[i]){
+            if (axeet.topic[i + 1] === undefined){
+                axeet.topic[i + 1] = new Topics("")
+                axeet.topic[i + 1].cheat[0] = new Cheats("", "")
+            }
         }
         // axeet.topic[i] = new Topics("", new Cheats("", ""))
     }
@@ -152,15 +156,13 @@ function novoAddEventListenerPosCreateTopic(countTopic, axeet) {
 
     form.addEventListener('input', form.novo_fn = function novo_fn(){
         for (i = 0; countTopic > i; i++){
-            var auxtopic = axeet.topic[i]
 
             if (axeet.topic[i + 1] === undefined){
                 var topicX = new Topics
-
                 topicX.topicName = document.getElementById("topicName").value
                 topicX.cheat =  axeet.topic[i].cheat
-                axeet.topic[i] = topicX;
-                editor.setValue(JSON.stringify(axeet, undefined, 8))
+                axeet.topic = topicX;
+                editor.setValue(JSON.stringify(axeet, undefined, 2))
             }
         }
     })
@@ -178,7 +180,7 @@ function createCheat() {
 
     document.getElementById("codeCheat").value = ""
     document.getElementById("description").value = ""
-    editor.setValue(JSON.stringify(axeet, undefined, 8));
+    editor.setValue(JSON.stringify(axeet, undefined, 2));
 
 }
 
@@ -187,15 +189,14 @@ function createTopic() {
     let text = editor.getValue();
     var axeet = JSON.parse(text);
     var countTopic = axeet.topic.length;
-
+    console.log(axeet)
     percorreTopicList(countTopic, axeet)
     novoAddEventListenerPosCreateTopic(countTopic, axeet)
 
     document.getElementById("topicName").value = ""
     document.getElementById("codeCheat").value = ""
     document.getElementById("description").value = ""
-    editor.setValue(JSON.stringify(axeet, undefined, 8));
-
+    editor.setValue(JSON.stringify(axeet, undefined, 2));
 
 }
 
