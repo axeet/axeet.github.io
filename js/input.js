@@ -8,7 +8,7 @@ class Axeet {
     }
     addTopic(topicName, cheat){
         let newTopic = new Topics(topicName, cheat);
-        this.topic.push(newTopic);
+        this.topic.push([newTopic]);
         return newTopic
     }
 }
@@ -19,7 +19,7 @@ class Topics {
     }
     addCheat (codeCheat, description){
         let newCheat = new Cheats(codeCheat, description);
-        this.cheat.push(newCheat);
+        this.cheat.push([newCheat]);
         return newCheat;
     }
 }
@@ -32,21 +32,56 @@ class Cheats {
 
 const form = document.querySelector('main');
 
-form.addEventListener('input', function (){
+function autoGenerateTextRealtime() {
+    const x = getAxeet();
+    editor.setValue(JSON.stringify(x, undefined, 2));
+}
 
-    if ((sessionStorage.getItem("axeet")) === null){
-        console.log("-- não possui dados no session storage---")
-        const axeet = getAxeet();
-        document.getElementById("axeetScript").innerHTML = JSON.stringify(axeet, undefined, 8);
-    }else {
-        console.log("-- carregando dados do session storage")
-        const axeet = JSON.parse(sessionStorage.getItem("axeet"))
-        document.getElementById("axeetScript").innerHTML = JSON.stringify(axeet, undefined, 8);
+form.addEventListener('input', autoGenerateTextRealtime)
+
+function autoGenerateTextRealTimeCheat(){
+    var {axeet, countTopic} = getEditorValues();
+
+    for (i = 0; countTopic > i; i++) {
+        if (axeet.topic[i + 1] === undefined) {
+            var countCheat = axeet.topic[i].cheat.length;
+            for (j = 0; j < countCheat; j++) {
+                if (axeet.topic[i].cheat[j + 1] === undefined) {
+                    var cheatX = new Cheats
+                    cheatX.codeCheat = document.getElementById("codeCheat").value;
+                    cheatX.description = document.getElementById("description").value;
+                    axeet.topic[i].cheat[j] = cheatX;
+                    editor.setValue(JSON.stringify(axeet, undefined, 2));
+                }
+            }
+        }
     }
+}
 
-});
+function autoGeneratetextRealTimeTopic() {
+    var {axeet, countTopic} = getEditorValues();
+
+    for (i = 0; countTopic > i; i++) {
+        if (axeet.topic[i + 1] === undefined) {
+            var topicX = new Topics
+            topicX.topicName = document.getElementById("topicName").value
+            topicX.cheat = axeet.topic[i].cheat
+            axeet.topic[i] = topicX;
+            editor.setValue(JSON.stringify(axeet, undefined, 2))
+        }
+    }
+}
+
+function getEditorValues() {
+    let text = editor.getValue();
+    var axeet = JSON.parse(text);
+    var countTopic = axeet.topic.length;
+    return {axeet, countTopic};
+}
 
 function getAxeet() {
+
+    var texte =  editor.getValue();
 
     var axeet = new Axeet();
     var topic = new Topics();
@@ -56,80 +91,97 @@ function getAxeet() {
     axeet.theme = document.getElementById('themeTitle').value
     axeet.author = document.getElementById("author").value;
     axeet.cheatSheet = document.getElementById("cheatSheet").value;
-    axeet.topic = topic;
     topic.topicName = document.getElementById("topicName").value
-    topic.cheat = cheat;
     cheat.codeCheat = document.getElementById("codeCheat").value;
     cheat.description = document.getElementById("description").value;
+    topic.cheat = [cheat];
+    axeet.topic = [topic];
 
     return axeet;
 }
 
-function updateAxeet(AxeetDTO, codeCheat, description, topicName) {
+function editAxeetScript(){
+    let content = editor.getValue();
 
-    var axeet = new Axeet();
-    var topic = new Topics();
-    var cheat = new Cheats();
+    // console.log(content)
+    // document.getElementById("axeetScriptModal").innerHTML = content;
 
-    axeet.titleCheat = AxeetDTO.titleCheat;
-    axeet.theme = AxeetDTO.theme;
-    axeet.author = AxeetDTO.author;
-    axeet.cheatSheet = AxeetDTO.cheatSheet;
-    axeet.topic = topic;
+    editorModal.setValue(content);
 
-    if (topicName === ""){
-        topic.topicName = AxeetDTO.topic.topicName;
-        topic.cheat = cheat;
-    }else {
-        axeet.addTopic(topicName);
-    }
-    if ((codeCheat || description) === ""){
-        cheat.codeCheat = AxeetDTO.topic.cheat.codeCheat;
-        cheat.description = AxeetDTO.topic.cheat.description;
-    }else{
-        cheat.codeCheat = AxeetDTO.topic.cheat.codeCheat;
-        cheat.description = AxeetDTO.topic.cheat.description;
-        topic.addCheat(codeCheat, description);
-    }
-    console.log(axeet);
-    // return axeet;
+    setTimeout(function() {
+        editorModal.refresh();
+    },1);
 }
 
-
-function createCheat() {
-
-    if ((sessionStorage.getItem("axeet")) === null){
-         var axeet = getAxeet();
-         sessionStorage.setItem("axeet", JSON.stringify(axeet));
-
-         document.getElementById("codeCheat").value = "";
-         document.getElementById("description").value = "";
-    }else {
-        var codeCheat = document.getElementById("codeCheat").value;
-        var description = document.getElementById("description").value;
-
-        var axeetS = JSON.parse(sessionStorage.getItem("axeet"));
-
-        // console.log(axeetS.topic.addCheat(codeCheat, description));
-
-        updateAxeet(axeetS, codeCheat, description)
-
-        // console.log(axeet);
-        //
-        // axeet.topic.addCheat()
-        //
-        // console.log(axeet);
-
-
-        // var topic = new Topics();
-        //
-        // topic.addCheat(cheat.codeCheat, cheat.description);
-        //
-        // axeet.addTopic(topic.topicName, topic.cheat);
+function isJSON(text){
+    if (typeof text === 'string'){
+        return false;
     }
 
+    if (JSON.parse(text) === null){
+        return false;
+    }
 
-   // var axeet =  populaAxeet(topic);
-
+    try{
+        var json = JSON.parse(text);
+        return (typeof json === 'object');
+    }
+    catch (error){
+        return false;
+    }
 }
 
+function saveEditedAxeetScript(){
+    let originalContent = editor.getValue();
+    let modalContent = editorModal.getValue();
+
+    let originalTitleCheat = document.getElementById("titleCheat").value
+    let originalThemeTitle = document.getElementById('themeTitle').value
+    let originalAuthor = document.getElementById("author").value
+    let originalCheatSheet = document.getElementById("cheatSheet").value
+    let originalTopicName = document.getElementById("topicName").value
+    let originalCodeCheat = document.getElementById("codeCheat").value
+    let originalDescription = document.getElementById("description").value
+
+    if(isJSON(modalContent)) {
+        document.getElementById("titleCheat").value = ""
+        document.getElementById('themeTitle').value = ""
+        document.getElementById("author").value = ""
+        document.getElementById("cheatSheet").value = ""
+        document.getElementById("topicName").value = ""
+        document.getElementById("codeCheat").value = ""
+        document.getElementById("description").value = ""
+
+        editor.setValue(modalContent);
+    } else {
+        document.getElementById("titleCheat").value = originalTitleCheat
+        document.getElementById('themeTitle').value = originalThemeTitle
+        document.getElementById("author").value = originalAuthor
+        document.getElementById("cheatSheet").value = originalCheatSheet
+        document.getElementById("topicName").value = originalTopicName
+        document.getElementById("codeCheat").value = originalCodeCheat
+        document.getElementById("description").value = originalDescription
+
+        editor.setValue(originalContent);
+    }
+}
+
+function novoAddEventListenerPosCreateTopic(countTopic, axeet) {
+    form.removeEventListener('input', autoGenerateTextRealtime)
+    form.addEventListener('input', autoGeneratetextRealTimeTopic)
+}
+
+function novoAddEventListenerPosCreateCheat(axeet, countTopic) {
+    form.removeEventListener('input', autoGenerateTextRealtime)
+    form.addEventListener('input', autoGenerateTextRealTimeCheat)
+}
+
+$("#topicName").keyup(function (){
+    novoAddEventListenerPosCreateTopic()
+})
+$("#codeCheat").keyup(function (){
+    novoAddEventListenerPosCreateCheat()
+})
+$("#description").keyup(function (){
+    novoAddEventListenerPosCreateCheat()
+})
