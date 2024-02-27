@@ -114,9 +114,14 @@ function editAxeetScript(){
 }
 
 function isJSON(text){
-    if (typeof text!=="string"){
+    if (typeof text === 'string'){
         return false;
     }
+
+    if (JSON.parse(text) === null){
+        return false;
+    }
+
     try{
         var json = JSON.parse(text);
         return (typeof json === 'object');
