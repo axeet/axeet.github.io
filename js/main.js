@@ -1,6 +1,10 @@
 function generateCheatSheet() {
     var {axeet, countTopic} = getEditorValues();
     alert(JSON.stringify(axeet))
+    const formSubmit = document.getElementById("axeetForm")
+    formSubmit.target = '_blank'
+    formSubmit.action = 'template.html'
+    formSubmit.submit(axeet)
 }
 
 function createTopic() {
